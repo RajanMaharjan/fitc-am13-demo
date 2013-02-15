@@ -1,6 +1,7 @@
 body {
     font-family: Tahoma, sans-serif;
-    background-color: #f1f1f1;
+    color: #fff;
+    background: #2f2f2f url('images/navy_bg.png') repeat;
 }
 
 #main {

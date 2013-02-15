@@ -1,20 +1,39 @@
 @main("Kendo example") {
 
+    <!-- template -->
+    <script id="entry-template" type="text/x-kendo-template">
+        <li>
+            <img src="assets/images/uploads/#= image_url #"
+                alt="#= title #" />
+
+            <h3>#= title #</h3>
+        </li>
+    </script>
+
     <!-- datasource -->
     <script>
         var datasource = new kendo.data.DataSource({
             data: [
-                { title: 'Anemony', src: 'images/uploads/anemony.jpg' },
-                { title: 'Lionfish', src: 'images/uploads/lionfish.jpg' },
-                { title: 'Nautilus', src: 'images/uploads/nautilus.jpg' },
-                { title: 'Our process', src: 'images/uploads/process.jpg' },
-                { title: 'Purple leaf', src: 'images/uploads/purple-leaf.jpg' },
-                { title: 'Scorpionfish', src: 'images/uploads/scorpionfish.jpg' }
+                { title: 'Anemony', image_url: 'anemony.jpg' },
+                { title: 'Lionfish', image_url: 'lionfish.jpg' },
+                { title: 'Nautilus', image_url: 'nautilus.jpg' },
+                { title: 'Our process', image_url: 'process.jpg' },
+                { title: 'Purple leaf', image_url: 'purple-leaf.jpg' },
+                { title: 'Scorpionfish', image_url: 'scorpionfish.jpg' }
             ],
             change: function() {
-                console.log(this.view());
+                var templateContent = $("#entry-template").html();
+                var template = kendo.template(templateContent);
+
+                var data = this.view();
+
+                $("<ul />")
+                    .html(kendo.render(template, data))
+                    .appendTo("body");
             }
         });
+
+        datasource.read();
     </script>
 
 }

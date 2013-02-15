@@ -1,5 +1,20 @@
 @main("Kendo example") {
 
-    <h1>You are now ready for Kendo!</h1>
+    <!-- datasource -->
+    <script>
+        var datasource = new kendo.data.DataSource({
+            data: [
+                { title: 'Anemony', src: 'images/uploads/anemony.jpg' },
+                { title: 'Lionfish', src: 'images/uploads/lionfish.jpg' },
+                { title: 'Nautilus', src: 'images/uploads/nautilus.jpg' },
+                { title: 'Our process', src: 'images/uploads/process.jpg' },
+                { title: 'Purple leaf', src: 'images/uploads/purple-leaf.jpg' },
+                { title: 'Scorpionfish', src: 'images/uploads/scorpionfish.jpg' }
+            ],
+            change: function() {
+                console.log(this.view());
+            }
+        });
+    </script>
 
 }

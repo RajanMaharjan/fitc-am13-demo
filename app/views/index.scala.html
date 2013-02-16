@@ -19,14 +19,9 @@
     <!-- datasource -->
     <script>
         var datasource = new kendo.data.DataSource({
-            data: [
-                { title: 'Anemony in the night', image_url: 'anemony.jpg', location: 'Phuket, Thailand' },
-                { title: 'I almost touched this grumpy scorpionfish!', image_url: 'scorpionfish.jpg', location: '' },
-                { title: 'Don\'t move! It will sting just a bit...', image_url: 'lionfish.jpg', location: '' },
-                { title: 'Dating back to pre-historic times', image_url: 'nautilus.jpg', location: '' },
-                { title: 'A shy Purple Leaf...', image_url: 'purple-leaf.jpg', location: '' },
-                { title: 'Will you be so calm in front of an alien?', image_url: 'process.jpg', location: '' }
-            ],
+            transport: {
+                read: "/posts"
+            },
             change: function() {
                 var templateContent = $("#entry-template").html();
                 var template = kendo.template(templateContent);

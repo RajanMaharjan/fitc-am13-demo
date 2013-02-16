@@ -2,24 +2,30 @@
 
     <!-- template -->
     <script id="entry-template" type="text/x-kendo-template">
-        <li>
-            <img src="assets/images/uploads/#= image_url #"
-                alt="#= title #" />
+        <article>
+            <img src="assets/images/uploads/#= image_url #" alt="#= title #" />
 
-            <h3>#= title #</h3>
-        </li>
+            <div class="details">
+                <h3>
+                    #= title #
+                    # if (location) { #
+                    <small>spotted in #= location #</small>
+                    # } #
+                </h3>
+            </div>
+        </article>
     </script>
 
     <!-- datasource -->
     <script>
         var datasource = new kendo.data.DataSource({
             data: [
-                { title: 'Anemony', image_url: 'anemony.jpg' },
-                { title: 'Lionfish', image_url: 'lionfish.jpg' },
-                { title: 'Nautilus', image_url: 'nautilus.jpg' },
-                { title: 'Our process', image_url: 'process.jpg' },
-                { title: 'Purple leaf', image_url: 'purple-leaf.jpg' },
-                { title: 'Scorpionfish', image_url: 'scorpionfish.jpg' }
+                { title: 'Anemony', image_url: 'anemony.jpg', location: 'Phuket, Thailand' },
+                { title: 'Grumpy Scorpionfish', image_url: 'scorpionfish.jpg', location: '' },
+                { title: 'Lionfish', image_url: 'lionfish.jpg', location: '' },
+                { title: 'Nautilus', image_url: 'nautilus.jpg', location: '' },
+                { title: 'Purple leaf', image_url: 'purple-leaf.jpg', location: '' },
+                { title: 'Our process', image_url: 'process.jpg', location: '' }
             ],
             change: function() {
                 var templateContent = $("#entry-template").html();
@@ -27,8 +33,9 @@
 
                 var data = this.view();
 
-                $("<ul />")
+                $("<div id='posts' />")
                     .html(kendo.render(template, data))
+                    .find("article:first").addClass("current").end()
                     .appendTo("body");
             }
         });

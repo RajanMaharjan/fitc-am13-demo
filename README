@@ -1,4 +1,7 @@
-This is your new Play 2.1 application
-=====================================
+# Sample Kendo UI application using the Play framework with Java
 
-This file will be packaged with your application, when using `play dist`.
+Part of the Building modern web apps presentation at [FITC Amsterdam 2012](http://fitc.ca/event/am13/).
+
+1. **datasource** - shows binding of datasource to local data
+2. **templates** - rendering datasource items with a template
+3. **remote-binding** - binds datasource to remote data
